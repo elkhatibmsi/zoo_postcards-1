@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <PostCardForm />
+  <PostCard msg="This is where our postcard will live"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PostCard from './components/PostCard.vue'
+import PostCardForm from './components/PostCardForm.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PostCardForm,
+    PostCard
   }
 }
 </script>
