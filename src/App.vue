@@ -1,6 +1,6 @@
 <template>
   <PostCardForm />
-  <PostCard msg="This is where our postcard will live"/>
+  <!-- <PostCard msg="This is where our postcard will live"/> -->
 </template>
 
 <script>
