@@ -16,7 +16,6 @@
 </template>
 
 <!--
-I need to import or receive formInputs from PostCardForm.vue
 To make it work like before, cut/paste the <div class="postcard"> section above into the end of the template section in PostCardForm.vue
  -->
 
@@ -26,9 +25,9 @@ TO DO:
   -try using vanilla javascript?
   -Whole thing BROKE
 -insert dropdown menu to select animal background
-  -Put animal backgrounds into a list, then cycle through it to give options
-    -How? An array of pictures?
+  -Put animal backgrounds into an array, then cycle through it to give options
 -add background to live rendering component
+  -how? Also need to fix styling so it will show (aspect ratio, size, fields on postcard)
 -link dropdown to changing background
   -use code from productDisplay:
     in a div:
@@ -39,22 +38,15 @@ TO DO:
             },
 -->
 
-<!-- 
-From Intro_To_Vue/components/ProductDisplay.js:
-<review-form @review-submitted="addReview"></review-form>
-  -(review-submitted is what it was emitted as)
-       
-       <postcard @formInputs="addPostCard"></postcard>
+<!--For emit issues:
+<PostCard @formInputs="addPostCard"/>
 
  addReview(review) {
             this.reviews.push(review)
         }
-  
-AddReview is a method creating a new review, so maybe do that with formInputs?
-But I need a method to create that new postcard
+
 
 Use this, replace HelloWorld with a new postcard
-  -this says "when getting the message, do this"
 <HelloWorld @changeMsg="setMessage" :msg="welcomeMsg"/>
 
 This is how to use emit in a method:
@@ -68,25 +60,16 @@ This was used with a button using onSubmit/@click
 Previous 2 examples from https://pusher.com/tutorials/vue-custom-events
 -->
 
-
-<!--
-Put in template somewhere:
-v-for="(image, index) in backgrounds"
-:description="image.animal"
-((link to actual image? use {{ whatever }} ))
-  maybe <option value ="{{image.animal}}"> {{image.animal}}</option>
-  to fill out select list
-
-put in data() return:
-backgrounds: [
-  {id: 1, animal: 'Elephant', image: './assets/elephant.jpg'},
-  {id: 2, animal: 'Panda', image: './assets/panda.jpg'},
-  {id: 3, animal: 'Tortoise', image: './assets/tortoise.jpg'}
-]
--->
-
+<!--Ideas for another day (ie, not to be done by me)
+-add email functionality
+-save (download) your postcard
+-option to change fonts
+-upload your own image for background
+-add stickers or something to overlay the postcard (emojis?)
+ -->
 
 <script>
+// import PostCardForm from './components/PostCardForm.vue'
 export default {
   name: 'PostCard',
   props: {
@@ -95,7 +78,7 @@ export default {
     // recipient: String 
   },
   data() {
-    
+
   },
   methods: {
     // updatePostCard(formInputs) {   //this is entirely wrong

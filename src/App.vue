@@ -1,5 +1,5 @@
 <template>
-  <PostCardForm />
+  <PostCardForm/>
   <PostCard/>
 </template>
 
