@@ -1,8 +1,8 @@
 <template>
   <div class="postcard">
-    <h1>{{ msg }}</h1>
+    <!-- <h1>{{ msg }}</h1> -->
    </div>
-   <div class="postcard-form-render">
+   <div @formInputs="updatePostCard" class="postcard-form-render">
     <p class="recipient-name">
       Sent to: {{ recipient }}
     </p>
@@ -24,7 +24,10 @@ To make it work like before, cut/paste the <div class="postcard"> section above 
 TO DO:
 -fix import formInputs from PostCardForm.vue
   -try using vanilla javascript?
+  -Whole thing BROKE
 -insert dropdown menu to select animal background
+  -Put animal backgrounds into a list, then cycle through it to give options
+    -How? An array of pictures?
 -add background to live rendering component
 -link dropdown to changing background
   -use code from productDisplay:
@@ -40,6 +43,8 @@ TO DO:
 From Intro_To_Vue/components/ProductDisplay.js:
 <review-form @review-submitted="addReview"></review-form>
   -(review-submitted is what it was emitted as)
+       
+       <postcard @formInputs="addPostCard"></postcard>
 
  addReview(review) {
             this.reviews.push(review)
@@ -64,7 +69,21 @@ Previous 2 examples from https://pusher.com/tutorials/vue-custom-events
 -->
 
 
+<!--
+Put in template somewhere:
+v-for="(image, index) in backgrounds"
+:description="image.animal"
+((link to actual image? use {{ whatever }} ))
+  maybe <option value ="{{image.animal}}"> {{image.animal}}</option>
+  to fill out select list
 
+put in data() return:
+backgrounds: [
+  {id: 1, animal: 'Elephant', image: './assets/elephant.jpg'},
+  {id: 2, animal: 'Panda', image: './assets/panda.jpg'},
+  {id: 3, animal: 'Tortoise', image: './assets/tortoise.jpg'}
+]
+-->
 
 
 <script>
@@ -79,7 +98,11 @@ export default {
     
   },
   methods: {
-
+    // updatePostCard(formInputs) {   //this is entirely wrong
+    //   msg = formInputs.msg;
+    //   sender = this.sender;
+    //   recipient = this.recipient
+    // }
   },
   computed: {
         msg() {
