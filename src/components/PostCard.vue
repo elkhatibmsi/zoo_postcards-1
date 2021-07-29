@@ -2,7 +2,7 @@
   <div class="postcard">
     <!-- <h1>{{ msg }}</h1> -->
    </div>
-   <div @formInputs="updatePostCard" class="postcard-form-render">
+   <div @form-inputs="updatePostCard" class="postcard-form-render">
     <p class="recipient-name">
       Sent to: {{ recipient }}
     </p>
@@ -21,13 +21,11 @@ To make it work like before, cut/paste the <div class="postcard"> section above 
 
 <!--
 TO DO:
--fix import formInputs from PostCardForm.vue
+-fix import form-inputs from PostCardForm.vue
   -try using vanilla javascript?
   -Whole thing BROKE
--insert dropdown menu to select animal background
-  -Put animal backgrounds into an array, then cycle through it to give options
 -add background to live rendering component
-  -how? Also need to fix styling so it will show (aspect ratio, size, fields on postcard)
+  -how? Also need to fix styling so it will show (aspect ratio, proper size, fields on postcard, etc)
 -link dropdown to changing background
   -use code from productDisplay:
     in a div:
@@ -39,7 +37,10 @@ TO DO:
 -->
 
 <!--For emit issues:
-<PostCard @formInputs="addPostCard"/>
+v-model syntax:
+v-model:argument-prop-name="data-to-bind"
+
+<PostCard @form-inputs="addPostCard"/>
 
  addReview(review) {
             this.reviews.push(review)
@@ -81,8 +82,8 @@ export default {
 
   },
   methods: {
-    // updatePostCard(formInputs) {   //this is entirely wrong
-    //   msg = formInputs.msg;
+    // updatePostCard(form-inputs) {   //this is entirely wrong
+    //   msg = form-inputs.msg;
     //   sender = this.sender;
     //   recipient = this.recipient
     // }
