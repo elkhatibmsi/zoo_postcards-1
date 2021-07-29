@@ -1,29 +1,27 @@
 <template>
   <div class="postcard">
-    <!-- <h1>{{ msg }}</h1> -->
    </div>
-   <div @form-inputs="updatePostCard" class="postcard-form-render">
+   <div class="postcard-form-render">
     <p class="recipient-name">
-      Sent to: {{ recipient }}
+      Sent to: {{ outputRecipient }}
     </p>
     <p class="message-output">
-        Your message is: {{ msg }}
+        Your message is: {{ outputMsg }}
     </p>
     <p class="sender-name">
-      Sent by: {{ sender }}
+      Sent by: {{ outputSender }}
     </p>
   </div>
 </template>
 
-<!--
-To make it work like before, cut/paste the <div class="postcard"> section above into the end of the template section in PostCardForm.vue
- -->
+<!-- I got it working, with a few caveats:
+Since the article only dealt with emitting one thing at a time, rather than 3 variables 
+like we want, I had to do a separate emit/receive for each argument
+also, because I couldn't emit all 3 variable in one command, I had to make each input box submit by
+pressing enter, so the submit button is just sitting there uselessly right now-->
 
 <!--
 TO DO:
--fix import form-inputs from PostCardForm.vue
-  -try using vanilla javascript?
-  -Whole thing BROKE
 -add background to live rendering component
   -how? Also need to fix styling so it will show (aspect ratio, proper size, fields on postcard, etc)
 -link dropdown to changing background
@@ -36,29 +34,9 @@ TO DO:
             },
 -->
 
-<!--For emit issues:
+<!--
 v-model syntax:
 v-model:argument-prop-name="data-to-bind"
-
-<PostCard @form-inputs="addPostCard"/>
-
- addReview(review) {
-            this.reviews.push(review)
-        }
-
-
-Use this, replace HelloWorld with a new postcard
-<HelloWorld @changeMsg="setMessage" :msg="welcomeMsg"/>
-
-This is how to use emit in a method:
-methods: {
-        changeMsg() {
-          this.$emit("changeMsg", this.welcomeMsg);
-        }
-      }
-This was used with a button using onSubmit/@click
-
-Previous 2 examples from https://pusher.com/tutorials/vue-custom-events
 -->
 
 <!--Ideas for another day (ie, not to be done by me)
@@ -70,35 +48,13 @@ Previous 2 examples from https://pusher.com/tutorials/vue-custom-events
  -->
 
 <script>
-// import PostCardForm from './components/PostCardForm.vue'
 export default {
   name: 'PostCard',
   props: {
-    // msg: String,
-    // sender: String,
-    // recipient: String 
-  },
-  data() {
-
-  },
-  methods: {
-    // updatePostCard(form-inputs) {   //this is entirely wrong
-    //   msg = form-inputs.msg;
-    //   sender = this.sender;
-    //   recipient = this.recipient
-    // }
-  },
-  computed: {
-        msg() {
-            return this.msg
-        },
-        sender() {
-            return this.sender
-        },
-        recipient() {
-            return this.recipient
-        }
-    }
+    outputRecipient: {type: String},
+    outputMsg: {type: String},
+    outputSender: {type: String}
+  }
 }
 </script>
 

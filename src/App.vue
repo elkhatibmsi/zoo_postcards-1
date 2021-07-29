@@ -1,6 +1,14 @@
 <template>
-  <PostCardForm/>
-  <PostCard/>
+  <PostCardForm
+    @input-recipient="UpdateRecipient"
+    @input-msg="UpdateMsg"
+    @input-sender="UpdateSender"
+  />
+  <PostCard
+    :outputRecipient="outputRecipient"
+    :outputMsg="outputMsg"
+    :outputSender="outputSender"
+  />
 </template>
 
 <script>
@@ -12,8 +20,29 @@ export default {
   components: {
     PostCardForm,
     PostCard
+  },
+  data: function() {
+    return {
+      outputRecipient: "",
+      outputMsg: "",
+      outputSender: ""
+    };
+  },
+  methods: {
+    // UpdatePostCard(variable) { 
+    //   this.childData = variable;
+    // }
+    UpdateRecipient(outputRecipient) {
+      this.outputRecipient = outputRecipient;
+    },
+    UpdateMsg(outputMsg) {
+      this.outputMsg = outputMsg;
+    },
+    UpdateSender(outputSender) {
+      this.outputSender = outputSender;
+    }
   }
-}
+};
 </script>
 
 <style>

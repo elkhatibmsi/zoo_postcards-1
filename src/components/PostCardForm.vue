@@ -3,26 +3,35 @@
     <!-- <h2>This is where the form will live</h2> -->
     <div class="recipient-input">
       <label>Recipient: </label>
-      <input class="input" :recipient="recipient"/>
+      <input 
+        class="input"
+        v-model="recipient"
+        @keyup.enter="submitRecipient"
+      />
     </div>
     <div class="msg-input">
       <label>Enter message: </label>
-      <input class="input msg-input-box" :msg="msg"/>
+      <input
+        class="input msg-input-box"
+        v-model="msg"
+        @keyup.enter="submitMsg"
+      />
     </div>
     <div class="sender-input">
       <label>Sender:  </label>
-      <input class="input" :sender="sender"/>
+      <input
+        class="input"
+        v-model="sender"
+        @keyup.enter="submitSender"
+      />
     </div>
     <div class="dropdown">
-      <label>Select Background: </label>  <!--Put this in a v-for when you get the chance-->
+      <label>Select Background: </label>
       <select class="background-dropdown">
         <option value="default" selected>--Select a background--</option>
         <option v-for="image in backgrounds"
         :key="image.index"
         :description="image.animal"> {{image.animal}} </option>
-        <!-- <option value="elephant">Elephant</option>
-        <option value="panda">Panda</option>
-        <option value="tortoise">Tortoise</option> -->
       </select>
     </div>
   </div>
@@ -33,11 +42,11 @@
 <script>
 export default {
   name: 'PostCardForm',
-  props: {
-    msg: String,
-    sender: String,
-    recipient: String 
-  },
+  // props: {
+  //   msg: String,
+  //   sender: String,
+  //   recipient: String 
+  // },
   data() {
     return{
       backgrounds: [ //array of animal background images
@@ -54,13 +63,22 @@ export default {
         return
       }
       
-      let formInputs = {
-              msg: this.msg,
-              sender: this.sender,
-              recipient: this.recipient
-          }
-      this.$emit('form-inputs', formInputs)
-      //form-inputs is what it is being emitted as(how PostCard will receive it), formInputs is the actual data being passed
+      // let formInputs = {
+      //         msg: this.msg,
+      //         sender: this.sender,
+      //         recipient: this.recipient
+      //     }
+      // this.$emit('form-inputs', formInputs)
+      // //form-inputs is what it is being emitted as(how PostCard will receive it), formInputs is the actual data being passed
+    },
+    submitRecipient: function() {
+      this.$emit("input-recipient", this.recipient);
+    },
+    submitMsg: function() {
+      this.$emit("input-msg", this.msg);
+    },
+    submitSender: function() {
+      this.$emit("input-sender", this.sender);
     }
   }
 }
