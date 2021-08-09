@@ -1,5 +1,6 @@
 <template>
   <PostCardForm
+    @formInputs="UpdatePostCard"
     @input-recipient="UpdateRecipient"
     @input-msg="UpdateMsg"
     @input-sender="UpdateSender"
@@ -29,9 +30,11 @@ export default {
     };
   },
   methods: {
-    // UpdatePostCard(variable) { 
-    //   this.childData = variable;
-    // }
+    UpdatePostCard(formInputs) { 
+      this.outputRecipient = formInputs.recipient;
+      this.outputMsg = formInputs.msg;
+      this.outputSender = formInputs.sender;
+    },
     UpdateRecipient(outputRecipient) {
       this.outputRecipient = outputRecipient;
     },

@@ -56,20 +56,20 @@ export default {
       ]
     }
   },
-  methods: {  //This part is submitting the emit, but can't get PostCard.vue to receive it
-    Submit() {
-      if (this.msg === '' || this.sender === '' || this.recipient === null) {
+  methods: {
+    Submit() {  //This is supposed to emit all 3 fields in one method, but something isn't working properly
+      if (this.msg === '' || this.sender === '' || this.recipient === '') {
         alert('PostCard is incomplete. Please fill out every field.')
         return
       }
       
-      // let formInputs = {
-      //         msg: this.msg,
-      //         sender: this.sender,
-      //         recipient: this.recipient
-      //     }
-      // this.$emit('form-inputs', formInputs)
-      // //form-inputs is what it is being emitted as(how PostCard will receive it), formInputs is the actual data being passed
+      let formInputs = {
+              msg: this.msg,
+              sender: this.sender,
+              recipient: this.recipient
+          }
+      this.$emit('formInputs', formInputs)
+      //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
     },
     submitRecipient: function() {
       this.$emit("input-recipient", this.recipient);

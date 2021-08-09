@@ -18,7 +18,7 @@
 Since the article only dealt with emitting one thing at a time, rather than 3 variables 
 like we want, I had to do a separate emit/receive for each argument
 also, because I couldn't emit all 3 variable in one command, I had to make each input box submit by
-pressing enter, so the submit button is just sitting there uselessly right now-->
+pressing enter, so the submit button is just sitting there uselessly right now -->
 
 <!--
 TO DO:
@@ -53,7 +53,7 @@ export default {
   props: {
     outputRecipient: {type: String},
     outputMsg: {type: String},
-    outputSender: {type: String}
+    outputSender: {type: String},
   }
 }
 </script>
