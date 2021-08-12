@@ -1,12 +1,11 @@
 <template>
   <div class="postcard-form-input">
-    <!-- <h2>This is where the form will live</h2> -->
     <div class="recipient-input">
       <label>Recipient: </label>
       <input 
         class="input"
         v-model="recipient"
-        @keyup.enter="submitRecipient"
+        @change="submitRecipient"
       />
     </div>
     <div class="msg-input">
@@ -14,7 +13,7 @@
       <input
         class="input msg-input-box"
         v-model="msg"
-        @keyup.enter="submitMsg"
+        @change="submitMsg"
       />
     </div>
     <div class="sender-input">
@@ -22,55 +21,47 @@
       <input
         class="input"
         v-model="sender"
-        @keyup.enter="submitSender"
+        @change="submitSender"
       />
     </div>
     <div class="dropdown">
       <label>Select Background: </label>
-      <select class="background-dropdown">
+      <select 
+        class="background-dropdown"
+        v-model="selectedImage"
+        @change="updateImage($event)" 
+        >
         <option value="default" selected>--Select a background--</option>
-        <option v-for="image in backgrounds"
-        :key="image.index"
-        :description="image.animal"> {{image.animal}} </option>
+        <option
+          v-for="(image, index) in backgrounds"
+          :key="index"
+          :description="image.animal"
+          :value="image.animal"
+          > {{image.animal}} </option>
       </select>
+      <button class="button" @click="changeBackground"> Use this background! </button>
     </div>
   </div>
-  <button class='button submit-button' @onClick="Submit"> Submit </button>
   <hr>
 </template>
 
 <script>
 export default {
   name: 'PostCardForm',
-  // props: {
-  //   msg: String,
-  //   sender: String,
-  //   recipient: String 
-  // },
   data() {
     return{
       backgrounds: [ //array of animal background images
         {id: 1, animal: 'Elephant', image: './assets/elephant.jpg'},
         {id: 2, animal: 'Panda', image: './assets/panda.jpg'},
         {id: 3, animal: 'Tortoise', image: './assets/tortoise.jpg'}
-      ]
+      ],
+      selectedImage: "default",
     }
   },
   methods: {
-    Submit() {  //This is supposed to emit all 3 fields in one method, but something isn't working properly
-      if (this.msg === '' || this.sender === '' || this.recipient === '') {
-        alert('PostCard is incomplete. Please fill out every field.')
-        return
-      }
-      
-      let formInputs = {
-              msg: this.msg,
-              sender: this.sender,
-              recipient: this.recipient
-          }
-      this.$emit('formInputs', formInputs)
-      //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
-    },
+    //   this.$emit('form-inputs', formInputs)
+    //   //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
+
     submitRecipient: function() {
       this.$emit("input-recipient", this.recipient);
     },
@@ -79,8 +70,19 @@ export default {
     },
     submitSender: function() {
       this.$emit("input-sender", this.sender);
+    },
+    updateImage: function(event) {
+      this.selectedImage = event.target.value;
+      console.log(event.target.value);
+      this.$emit("background-animal", this.selectedImage);
+    },
+    changeBackground: function() {
+      return;
+      //this.$emit("background-animal", selectedImage);
+      //this.backgrounds[this.selectedImage].image
+      //console.log(this.backgrounds[this.selectedImage].image);
     }
-  }
+  },
 }
 </script>
 
@@ -121,14 +123,16 @@ export default {
 }
 
 .button {
+  margin: 30px;
   background-color: #39495c;
   border-radius: 5px;
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
   color: white;
+  padding: 10px;
   text-align: center;
   cursor: pointer;
-  padding: 5px;
-  margin-top: 15px;
-  margin-bottom: 5px;
 }
 
 </style>

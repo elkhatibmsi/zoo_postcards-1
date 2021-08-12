@@ -11,14 +11,11 @@
     <p class="sender-name">
       Sent by: {{ outputSender }}
     </p>
+    <p> Animal: {{ background }}
+      </p>
+
   </div>
 </template>
-
-<!-- I got it working, with a few caveats:
-Since the article only dealt with emitting one thing at a time, rather than 3 variables 
-like we want, I had to do a separate emit/receive for each argument
-also, because I couldn't emit all 3 variable in one command, I had to make each input box submit by
-pressing enter, so the submit button is just sitting there uselessly right now -->
 
 <!--
 TO DO:
@@ -32,6 +29,15 @@ TO DO:
     updateVariant(index) {
                 this.selectedVariant = index
             },
+
+Link (v-bind or v-model?) selected picture to the displayed background
+In the script or in the css? Check ProductDisplay --- script, I think. Then just reference it in the css
+  :style="{ backgroundColor: variant.color }"
+Could I do that with the entire background image? Just using image.id or something?
+I think I have to emit the image, since the info is going from PostCardForm -> PostCard
+
+This would be so much easier if I didn't dynamically populate the image options list
+What do I lose if I hard code it? It'll still be quick and easy to add an item
 -->
 
 <!--
@@ -44,7 +50,7 @@ v-model:argument-prop-name="data-to-bind"
 -save (download) your postcard
 -option to change fonts
 -upload your own image for background
--add stickers or something to overlay the postcard (emojis?)
+-add stickers or something to overlay on the postcard (emojis?)
  -->
 
 <script>
@@ -54,6 +60,7 @@ export default {
     outputRecipient: {type: String},
     outputMsg: {type: String},
     outputSender: {type: String},
+    background: {type: String}
   }
 }
 </script>

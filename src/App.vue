@@ -1,14 +1,15 @@
 <template>
   <PostCardForm
-    @formInputs="UpdatePostCard"
     @input-recipient="UpdateRecipient"
     @input-msg="UpdateMsg"
     @input-sender="UpdateSender"
+    @background-animal="UpdateBackground"
   />
   <PostCard
     :outputRecipient="outputRecipient"
     :outputMsg="outputMsg"
     :outputSender="outputSender"
+    :background="background"
   />
 </template>
 
@@ -26,15 +27,16 @@ export default {
     return {
       outputRecipient: "",
       outputMsg: "",
-      outputSender: ""
+      outputSender: "",
+      background: "",
     };
   },
   methods: {
-    UpdatePostCard(formInputs) { 
-      this.outputRecipient = formInputs.recipient;
-      this.outputMsg = formInputs.msg;
-      this.outputSender = formInputs.sender;
-    },
+    // UpdatePostCard(formInputs) { 
+    //   this.outputRecipient = formInputs.recipient;
+    //   this.outputMsg = formInputs.msg;
+    //   this.outputSender = formInputs.sender;
+    // },
     UpdateRecipient(outputRecipient) {
       this.outputRecipient = outputRecipient;
     },
@@ -43,6 +45,9 @@ export default {
     },
     UpdateSender(outputSender) {
       this.outputSender = outputSender;
+    },
+    UpdateBackground(background) {
+      this.background = background;
     }
   }
 };
