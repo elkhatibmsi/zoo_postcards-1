@@ -32,11 +32,16 @@
         @change="updateImage($event)" 
         >
         <option value="default" selected>--Select a background--</option>
+        <!-- When I change the "default" here to something else, it goes blank until something is selected,
+        And if I select the 'select an animal', it says "default" on the render.
+        But if I change :value to :text or something (so I can keep the value='default'),
+        then it all breaks -->
         <option
           v-for="(image, index) in backgrounds"
           :key="index"
           :description="image.animal"
           :value="image.animal"
+          :link="image.image"
           > {{image.animal}} </option>
       </select>
       <button class="button" @click="changeBackground"> Use this background! </button>
@@ -74,13 +79,14 @@ export default {
     updateImage: function(event) {
       this.selectedImage = event.target.value;
       console.log(event.target.value);
-      this.$emit("background-animal", this.selectedImage);
+      return this.selectedImage;
+      // This will display the animal name on the render, but
+      // We need the link (.image of the background array)
+      // When we swap .value for .link, it says undefined?
     },
     changeBackground: function() {
+      this.$emit("background-animal", this.selectedImage);
       return;
-      //this.$emit("background-animal", selectedImage);
-      //this.backgrounds[this.selectedImage].image
-      //console.log(this.backgrounds[this.selectedImage].image);
     }
   },
 }
