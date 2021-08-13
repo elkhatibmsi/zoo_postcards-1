@@ -40,8 +40,7 @@
           v-for="(image, index) in backgrounds"
           :key="index"
           :description="image.animal"
-          :value="image.animal"
-          :link="image.image"
+          :value="image.image"
           > {{image.animal}} </option>
       </select>
       <button class="button" @click="changeBackground"> Use this background! </button>

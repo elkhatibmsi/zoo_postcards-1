@@ -1,6 +1,8 @@
 <template>
   <div class="postcard">
-   </div>
+  <div class="postcard--background">
+   <img :src="background" />
+    </div>    
    <div class="postcard-form-render">
     <p class="recipient-name">
       Sent to: {{ outputRecipient }}
@@ -11,9 +13,8 @@
     <p class="sender-name">
       Sent by: {{ outputSender }}
     </p>
-    <p> Animal: {{ background }}
-      </p>
 
+ </div>
   </div>
 </template>
 
