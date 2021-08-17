@@ -73,7 +73,7 @@ export default {
     },
     updateImage: function(event) {
       this.selectedImage = event.target.value;
-      console.log(event.target.value);
+      //console.log(event.target.value);
       return this.selectedImage;
     },
     changeBackground: function() {
