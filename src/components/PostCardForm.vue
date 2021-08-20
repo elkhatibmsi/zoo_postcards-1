@@ -1,7 +1,17 @@
 <template>
   <div class="postcard-form-input">
+    <div class="sender-input">
+      <label>Sender:  </label>
+      <hr>
+      <input
+        class="input"
+        v-model="sender"
+        @change="submitSender"
+      />
+    </div>
     <div class="recipient-input">
       <label>Recipient: </label>
+      <hr>
       <input 
         class="input"
         v-model="recipient"
@@ -10,20 +20,14 @@
     </div>
     <div class="msg-input">
       <label>Enter message: </label>
+      <hr>
       <input
         class="input msg-input-box"
         v-model="msg"
         @change="submitMsg"
       />
     </div>
-    <div class="sender-input">
-      <label>Sender:  </label>
-      <input
-        class="input"
-        v-model="sender"
-        @change="submitSender"
-      />
-    </div>
+    
     <div class="dropdown">
       <label>Select Background: </label>
       <select 
@@ -87,8 +91,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .postcard-form-input {
-  display: flex;
-  flex-direction: column;
+
   padding: 20px;
   background-color: lightblue;
 }
@@ -112,7 +115,6 @@ export default {
 
 .msg-input-box {
   padding: 10px;
-  width: 20%;
   height: 50px;
 }
 
