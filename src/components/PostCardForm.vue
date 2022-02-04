@@ -2,32 +2,34 @@
   <div class="postcard-form-input">
     <div class="sender-input">
       <label>Sender:  </label>
-      <hr>
+      <br><br>
       <input
         class="input"
         v-model="sender"
         @change="submitSender"
       />
     </div>
+    <hr>
     <div class="recipient-input">
       <label>Recipient: </label>
-      <hr>
+      <br><br>
       <input 
         class="input"
         v-model="recipient"
         @change="submitRecipient"
       />
     </div>
+    <hr>
     <div class="msg-input">
       <label>Enter message: </label>
-      <hr>
+      <br><br>
       <input
         class="input msg-input-box"
         v-model="msg"
         @change="submitMsg"
       />
     </div>
-    
+    <hr>
     <div class="dropdown">
       <label>Select Background: </label>
       <select 

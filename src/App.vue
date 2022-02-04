@@ -1,4 +1,5 @@
 <template>
+  <h1>Make Your Own Postcard!</h1>
   <PostCardForm
     @input-recipient="UpdateRecipient"
     @input-msg="UpdateMsg"
@@ -19,6 +20,9 @@ import PostCardForm from './components/PostCardForm.vue'
 
 export default {
   name: 'App',
+    created(){  //Page title
+    document.title = 'Postcard Creator'
+  },
   components: {
     PostCardForm,
     PostCard
@@ -61,4 +65,14 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+h1 {
+  display: flex;
+  font-size: 36px;
+}
 </style>
+
+<!--
+To Do:
+-fancy up the title (h1 above)
+-->

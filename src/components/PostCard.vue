@@ -23,7 +23,9 @@
 -option to change fonts
 -upload your own image for background
 -add stickers or something to overlay on the postcard (emojis?)
- -->
+-Place and move text over the image
+  -resize, recolor text?
+-->
 
 <script>
 export default {
@@ -62,3 +64,9 @@ a {
   color: #42b983;
 }
 </style>
+
+<!--
+To Do:
+-Make selected picture appear on the right side of the page
+-Make it look pretty
+-->
