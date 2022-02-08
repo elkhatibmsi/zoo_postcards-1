@@ -1,17 +1,20 @@
 <template>
-  <h1>Make Your Own Postcard!</h1>
-  <PostCardForm
-    @input-recipient="UpdateRecipient"
-    @input-msg="UpdateMsg"
-    @input-sender="UpdateSender"
-    @background-animal="UpdateBackground"
-  />
-  <PostCard
-    :outputRecipient="outputRecipient"
-    :outputMsg="outputMsg"
-    :outputSender="outputSender"
-    :background="background"
-  />
+
+    <h1>Make Your Own Postcard!</h1>
+    <div class="two-col">
+    <PostCardForm
+      @input-recipient="UpdateRecipient"
+      @input-msg="UpdateMsg"
+      @input-sender="UpdateSender"
+      @background-animal="UpdateBackground"
+    />
+    <PostCard
+      :outputRecipient="outputRecipient"
+      :outputMsg="outputMsg"
+      :outputSender="outputSender"
+      :background="background"
+    />
+  </div>
 </template>
 
 <script>
@@ -70,6 +73,13 @@ h1 {
   display: flex;
   font-size: 36px;
 }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
 </style>
 
 <!--

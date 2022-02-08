@@ -63,6 +63,10 @@ li {
 a {
   color: #42b983;
 }
+.postcard--background img {
+  width: auto;
+  height: 100%;
+}
 </style>
 
 <!--

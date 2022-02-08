@@ -48,7 +48,6 @@
       <button class="button" @click="changeBackground"> Use this background! </button>
     </div>
   </div>
-  <hr>
 </template>
 
 <script>
