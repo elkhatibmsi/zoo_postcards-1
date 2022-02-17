@@ -1,0 +1,7 @@
+{
+    "backgrounds": [ 
+        {"id": 1, "animal": "Elephant", "image": "./assets/elephant.jpg"},
+        {"id": 2, "animal": "Panda", "image": "./assets/panda.jpg"},
+        {"id": 3, "animal": "Tortoise", "image": "./assets/tortoise.jpg"}
+    ]
+}
