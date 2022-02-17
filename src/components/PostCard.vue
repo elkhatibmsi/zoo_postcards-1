@@ -71,6 +71,5 @@ a {
 
 <!--
 To Do:
--Make selected picture appear on the right side of the page
 -Make it look pretty
 -->

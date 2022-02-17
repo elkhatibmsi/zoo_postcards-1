@@ -55,17 +55,18 @@ export default {
   name: 'PostCardForm',
   data() {
     return{
-      backgrounds: [ //array of animal background images
-        {id: 1, animal: 'Elephant', image: './assets/elephant.jpg'},
-        {id: 2, animal: 'Panda', image: './assets/panda.jpg'},
-        {id: 3, animal: 'Tortoise', image: './assets/tortoise.jpg'}
-      ],
+      backgrounds: [],
       selectedImage: "default",
     }
   },
+  mounted() { //Where we get the data from the json file
+    fetch('http://localhost:3000/backgrounds')
+      .then(res => res.json())
+      .then(data => this.backgrounds = data)
+      .catch(err => console.log(err.message))
+  },
   methods: {
-    //   this.$emit('form-inputs', formInputs)
-    //   //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
+    //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
 
     submitRecipient: function() {
       this.$emit("input-recipient", this.recipient);
@@ -76,12 +77,12 @@ export default {
     submitSender: function() {
       this.$emit("input-sender", this.sender);
     },
-    updateImage: function(event) {
+    updateImage: function(event) {  //tells app to change the image
       this.selectedImage = event.target.value;
       //console.log(event.target.value);
       return this.selectedImage;
     },
-    changeBackground: function() {
+    changeBackground: function() {  //tells app what the new image will be
       this.$emit("background-animal", this.selectedImage);
       return;
     }
