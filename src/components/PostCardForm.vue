@@ -41,8 +41,8 @@
         <option
           v-for="(image, index) in backgrounds"
           :key="index"
-          :description="image.animal"
-          :value="image.image"
+          :description="image.title"
+          :value="image.image_large"
           > {{image.animal}} </option>
       </select>
       <button class="button" @click="changeBackground"> Use this background! </button>
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted() { //Where we get the data from the json file
-    fetch('http://localhost:3000/backgrounds')
+    fetch('https://nationalzoo.si.edu/pyd/animals')
       .then(res => res.json())
       .then(data => this.backgrounds = data)
       .catch(err => console.log(err.message))
