@@ -43,14 +43,14 @@
           :key="index"
           :description="image.title"
           :value="image.image_large"
-          > {{image.animal}} </option>
+          > {{image.title}} </option>
       </select>
       <button class="button" @click="changeBackground"> Use this background! </button>
     </div>
   </div>
 </template>
 
-<script>
+<script></script>
 export default {
   name: 'PostCardForm',
   data() {
