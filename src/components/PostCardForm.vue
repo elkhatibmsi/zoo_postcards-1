@@ -1,6 +1,6 @@
 <template>
   <div class="postcard-form-input">
-    <div class="sender-input">
+    <div class="form-input">
       <label>Sender:  </label>
       <br><br>
       <input
@@ -10,7 +10,7 @@
       />
     </div>
     <hr>
-    <div class="recipient-input">
+    <div class="form-input">
       <label>Recipient: </label>
       <br><br>
       <input 
@@ -20,7 +20,7 @@
       />
     </div>
     <hr>
-    <div class="msg-input">
+    <div class="form-input">
       <label>Enter message: </label>
       <br><br>
       <input
@@ -31,7 +31,7 @@
     </div>
     <hr>
     <div class="dropdown">
-      <label>Select Background: </label>
+      <label class="select-label">Select Background: </label>
       <select 
         class="background-dropdown"
         v-model="selectedImage"
@@ -39,11 +39,12 @@
         >
         <option value="default" selected>--Select a background--</option>
         <option
-          v-for="(image, index) in backgrounds"
+          v-for="(image, index) in backgrounds" 
           :key="index"
           :description="image.title"
           :value="image.image_large"
           > {{image.title}} </option>
+          <!-- Do we need to sort by {{image.title}}? Or just image.title? -->
       </select>
       <button class="button" @click="changeBackground"> Use this background! </button>
     </div>
@@ -57,6 +58,24 @@ export default {
     return{
       backgrounds: [],
       selectedImage: "default",
+    }
+  },
+  computed: { //Sort the list alphabetically
+    sortedArray() { //Doesn't work
+      let sortedNames = this.backgrounds;
+      // sortedNames.sort(); //Of course this doesn't work, that's too easy
+      
+      sortedNames = sortedNames.sort((a,b) => {
+        let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
+        if (fa < fb) {
+          return -1
+        }
+        if (fa > fb) {
+          return 1
+        }
+        return 0
+      })
+      return sortedNames;
     }
   },
   mounted() { //Where we get the data from the json file
@@ -98,34 +117,34 @@ export default {
   background-color: lightblue;
 }
 
-.recipient-input {
-  padding: 10px;
-}
-
-.msg-input {
-  padding: 10px;
-}
-
-.sender-input {
-  padding: 10px;
-}
-
 .input {
-  width: 10%;
   height: 25px;
+  width: 100%;
+  max-width: 500px;
+  outline: none;
+}
+
+.form-input {
+  margin-bottom: 25px;
+}
+
+.form-input label {
+  position: relative;
+  top: 10px;
 }
 
 .msg-input-box {
-  padding: 10px;
-  height: 50px;
+  height: 100px;
 }
 
-.dropdown {
+.background-dropdown {
   padding: 10px;
+  position: relative;
+  top: 10px;
 }
 
 .button {
-  margin: 30px;
+  margin-top: 50px;
   background-color: #39495c;
   border-radius: 5px;
   font-size: 14px;

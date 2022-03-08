@@ -18,6 +18,8 @@
 </template>
 
 <!--Ideas for another day
+-add a blank "choose animal" default image
+-make states persist (doesn't reset when you refresh page)
 -add email functionality
 -save (download) your postcard
 -option to change fonts
