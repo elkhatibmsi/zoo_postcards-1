@@ -147,6 +147,12 @@ export default {
   top: 10px;
 }
 
+.select-label {
+    padding: 10px;
+    position: relative;
+    top: 10px;
+}
+
 .button {
   margin-top: 50px;
   background-color: #39495c;
