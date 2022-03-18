@@ -82,6 +82,7 @@ export default {
     fetch('https://nationalzoo.si.edu/pyd/animals')
       .then(res => res.json())
       .then(data => this.backgrounds = data)
+      .then(this.backgrounds.sort((a, b) => b.title.localeCompare(a.title)))
       .catch(err => console.log(err.message))
   },
   methods: {
@@ -104,6 +105,10 @@ export default {
     changeBackground: function() {  //tells app what the new image will be
       this.$emit("background-animal", this.selectedImage);
       return;
+    },
+    increment() { //testing vuex states
+      this.$store.commit('increment')
+      console.log(this.$store.state.count)
     }
   },
 }
