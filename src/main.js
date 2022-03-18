@@ -5,10 +5,15 @@ import App from './App.vue'
 const store = createStore({
     state() {
         return {
+            count: 0,
             bgImage: "default"
         }
     },
-    mutations: {
+    actions: {      //actions can be complex, and can do everything else
+                    //actions call the mutations to change the state
+
+    },
+    mutations: {    //mutations are only supposed to change the state, stay simple
         increment(state) {
             state.count++
         }

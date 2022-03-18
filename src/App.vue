@@ -1,7 +1,7 @@
 <template>
 
     <h1>Make Your Own Postcard!</h1>
-    <div class="two-col">
+    <div>
     <PostCardForm
       @input-recipient="UpdateRecipient"
       @input-msg="UpdateMsg"
@@ -72,12 +72,6 @@ export default {
 h1 {
   display: flex;
   font-size: 36px;
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
 }
 
 </style>

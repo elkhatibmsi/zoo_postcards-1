@@ -9,7 +9,6 @@
         @change="submitSender"
       />
     </div>
-    <hr>
     <div class="form-input">
       <label>Recipient: </label>
       <br><br>
@@ -19,7 +18,6 @@
         @change="submitRecipient"
       />
     </div>
-    <hr>
     <div class="form-input">
       <label>Enter message: </label>
       <br><br>
@@ -29,7 +27,6 @@
         @change="submitMsg"
       />
     </div>
-    <hr>
     <div class="dropdown">
       <label class="select-label">Select Background: </label>
       <select 
@@ -46,7 +43,8 @@
           > {{image.title}} </option>
           <!-- Do we need to sort by {{image.title}}? Or just image.title? -->
       </select>
-      <button class="button" @click="changeBackground"> Use this background! </button>
+      <br>
+      <button class="button"> Create Postcard </button>
     </div>
   </div>
 </template>
@@ -99,13 +97,14 @@ export default {
     },
     updateImage: function(event) {  //tells app to change the image
       this.selectedImage = event.target.value;
+      this.$emit("background-animal", this.selectedImage);
       //console.log(event.target.value);
       return this.selectedImage;
     },
-    changeBackground: function() {  //tells app what the new image will be
-      this.$emit("background-animal", this.selectedImage);
-      return;
-    },
+    // changeBackground: function() {  //tells app what the new image will be
+    //   this.$emit("background-animal", this.selectedImage);
+    //   return;
+    // },
     increment() { //testing vuex states
       this.$store.commit('increment')
       console.log(this.$store.state.count)
