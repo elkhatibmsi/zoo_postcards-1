@@ -19,6 +19,7 @@
 
 <!--Ideas for another day
 -add a blank "choose animal" default image
+-filter search for animal backgrounds
 -make states persist (doesn't reset when you refresh page)
 -add email functionality
 -save (download) your postcard
@@ -48,8 +49,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-postcard {
+.postcard {
   display: grid;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  margin-top: 35px;
 }
 h3 {
   margin: 40px 0 0;
