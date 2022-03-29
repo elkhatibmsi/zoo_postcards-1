@@ -17,11 +17,10 @@
           </div>
         </div>
 
-<button class="button">Print PDF</button>
-</template>
+<button class="button" @click="generateReport">Print PDF</button>
 
-<template>
-<VueHtml2pdf 
+   <div>
+     <VueHtml2pdf
         :show-layout="false"
         :float-layout="true"
         :enable-download="true"
@@ -34,11 +33,30 @@
         pdf-orientation="landscape"
         pdf-content-width="800px"
         ref="html2Pdf"
-     
-       <section v-slot:pdf-content> 
-       </section>
-         
-</VueHtml2pdf>
+    >
+        <pdf> <template v-slot:pdf-content>
+          <!-- PDF Content Here -->
+
+          <!-- <div class="postcard row">
+            <div v-if="background !='default'" class="postcard--background column-left">
+              <img :src="background" />
+            </div>    
+            <div class="postcard-form-render column-right">
+              <p class="recipient-name">
+                Sent to: {{ outputRecipient }}
+              </p>
+              <p class="message-output">
+                  Your message is: {{ outputMsg }}
+              </p>
+              <p class="sender-name">
+                Sent by: {{ outputSender }}
+              </p>
+            </div>
+          </div> -->
+        </template>
+        </pdf>
+    </VueHtml2pdf>
+   </div>
 </template>
 
 <!--Ideas for another day
@@ -55,7 +73,6 @@
 -->
 
 <script>
- import VueHtml2pdf from 'vue-html2pdf'
 
 export default {
   name: 'PostCard',
@@ -65,9 +82,6 @@ export default {
     outputSender: {type: String},
     background: {type: String}
   },
-  // components: {
-  //   VueHtml2pdf
-  // },
   data() {
     return{
       isDefault: {type: Boolean}
@@ -108,7 +122,7 @@ a {
   width: auto;
   height: 100%;
 }
-.column {
+.column {   /* columns not working >=( */
   float: left;
 }
 .column-left {
