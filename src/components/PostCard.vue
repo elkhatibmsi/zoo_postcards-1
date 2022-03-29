@@ -1,10 +1,10 @@
 <template>
 
         <div class="postcard row">
-          <div v-if="background !='default'" class="postcard--background column-left">
+          <div v-if="background !='default'" class="postcard--background column column-left">
             <img :src="background" />
           </div>    
-          <div class="postcard-form-render column-right">
+          <div class="postcard-form-render column column-right">
             <p class="recipient-name">
               Sent to: {{ outputRecipient }}
             </p>
@@ -34,7 +34,8 @@
         pdf-content-width="800px"
         ref="html2Pdf"
     >
-        <pdf> <template v-slot:pdf-content>
+      <pdf>
+        <template v-slot:pdf-content>
           <!-- PDF Content Here -->
 
           <!-- <div class="postcard row">
@@ -54,13 +55,14 @@
             </div>
           </div> -->
         </template>
-        </pdf>
+      </pdf>
     </VueHtml2pdf>
    </div>
 </template>
 
 <!--Ideas for another day
 -add a blank "choose animal" default image
+-make a grid view of animal backgrounds when selecting
 -filter search for animal backgrounds
 -make states persist (doesn't reset when you refresh page)
 -add email functionality
@@ -88,10 +90,10 @@ export default {
     }
   },
   methods: {
-    generateReport () {
+    generateReport () { //gets an error when used, look into that
             this.$refs.html2Pdf.generatePdf()
+    }
   }
-}
 }
 </script>
 
@@ -103,6 +105,7 @@ export default {
   border-style: solid;
   border-color: black;
   margin-top: 35px;
+  padding: 40px;
 }
 h3 {
   margin: 40px 0 0;
@@ -121,15 +124,13 @@ a {
 .postcard--background img {
   width: auto;
   height: 100%;
+  padding-right: 30px;
 }
-.column {   /* columns not working >=( */
-  float: left;
+.row {
+  display: flex;
 }
-.column-left {
-  width: 35%;
-}
-.column-right {
-  width: 65%
+.column { /* text on right clips into pic on left */
+  flex: 50%
 }
 </style>
 
